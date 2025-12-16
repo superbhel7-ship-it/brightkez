@@ -15,7 +15,14 @@ jobs:
         run: |
           rm -rf public
           mkdir public
-          rsync -av --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='gh-pages-deploy.yml' ./ public/
+          # Copy all files except git and github dirs
+          find . -maxdepth 1 -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name ".nojekyll" \) -exec cp {} public/ \;
+          # Copy subdirectories (css, js, images, fonts)
+          for dir in css js images fonts; do
+            if [ -d "$dir" ]; then
+              cp -r "$dir" public/
+            fi
+          done
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
