@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages (gh-pages)
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare publish directory
+        run: |
+          rm -rf public
+          mkdir public
+          rsync -av --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='gh-pages-deploy.yml' ./ public/
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: public
+          keep_files: false
