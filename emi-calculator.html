@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator - Brightkeyz Infrastructure</title>
+    <meta name="description"
+        content="Calculate your home loan EMI easily with our EMI calculator. Plan your dream home purchase with Brightkeyz Infrastructure.">
+    <link rel="icon" type="image/png" href="images/cropped-Site-Logo-32x32.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/Brightkeyz-Infratructure.png" alt="Brightkeyz Infrastructure">
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="projects.html" class="nav-link">Projects</a></li>
+                    <li><a href="emi-calculator.html" class="nav-link active">EMI Calculator</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+                    <button class="hamburger" id="hamburger" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header"
+        style="background: linear-gradient(rgba(15, 15, 26, 0.9), rgba(15, 15, 26, 0.9)), url('images/2151264503-2-min.jpg') center/cover;">
+        <div class="container">
+            <h1 class="page-title">EMI Calculator</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>EMI Calculator</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <p class="section-subtitle">Financial Planning</p>
+                <h2 class="section-title">Home Loan EMI Calculator</h2>
+                <p style="max-width: 700px; margin: 0 auto; color: var(--text-light);">Plan your home purchase by
+                    calculating your monthly EMI. Enter the loan details below to get an instant estimate.</p>
+            </div>
+
+            <div class="calculator-grid">
+                <div class="calculator-form">
+                    <h3>Enter Loan Details</h3>
+                    <form id="emiForm">
+                        <div class="form-group">
+                            <label for="loanAmount"
+                                style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--secondary-color);">Loan
+                                Amount (₹)</label>
+                            <input type="number" id="loanAmount" value="5000000" min="100000" max="100000000" required
+                                oninput="calculateEMI()">
+                        </div>
+                        <div class="form-group">
+                            <label for="interestRate"
+                                style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--secondary-color);">Interest
+                                Rate (% per annum)</label>
+                            <input type="number" id="interestRate" value="8.5" min="1" max="20" step="0.1" required
+                                oninput="calculateEMI()">
+                        </div>
+                        <div class="form-group">
+                            <label for="loanTenure"
+                                style="display: block; margin-bottom: 8px; font-weight: 500; color: var(--secondary-color);">Loan
+                                Tenure (Years)</label>
+                            <input type="number" id="loanTenure" value="20" min="1" max="30" required
+                                oninput="calculateEMI()">
+                        </div>
+                        <div class="tenure-toggle">
+                            <button type="button" class="tenure-btn active"
+                                onclick="setTenureView('monthly')">Monthly</button>
+                            <button type="button" class="tenure-btn" onclick="setTenureView('yearly')">Yearly</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="calculator-result">
+                    <h3>Your EMI Breakdown</h3>
+                    <div class="result-item">
+                        <span class="result-label" id="emiLabel">Monthly EMI</span>
+                        <span class="result-value" id="emiResult">₹ 43,391</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Total Interest Payable</span>
+                        <span class="result-value" id="totalInterest">₹ 54,13,840</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Total Amount Payable</span>
+                        <span class="result-value" id="totalPayment">₹ 1,04,13,840</span>
+                    </div>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p style="font-size: 13px; color: rgba(255,255,255,0.6);">* This is an approximate calculation.
+                            Actual EMI may vary based on processing fees and other charges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Brightkeyz Section -->
+    <section class="emi-benefits-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <p class="section-subtitle">Why Build With Us</p>
+                <h2 class="section-title">Your Dream Home, Easy Financing</h2>
+                <p style="max-width: 700px; margin: 0 auto; color: var(--text-light);">Brightkeyz makes home ownership
+                    simple. We not only build your dream home but also help you plan your finances with our banking
+                    partners.</p>
+            </div>
+
+            <div class="emi-benefits-grid">
+                <div class="emi-benefit-card">
+                    <div class="emi-benefit-icon">
+                        <i class="ph ph-bank"></i>
+                    </div>
+                    <h3>Bank Tie-ups</h3>
+                    <p>We have partnerships with leading banks like SBI, HDFC, ICICI, and Axis Bank to get you the best
+                        home loan rates.</p>
+                </div>
+                <div class="emi-benefit-card">
+                    <div class="emi-benefit-icon">
+                        <i class="ph ph-percent"></i>
+                    </div>
+                    <h3>Low Interest Rates</h3>
+                    <p>Through our banking partnerships, we help you secure interest rates starting as low as 8.25% per
+                        annum.</p>
+                </div>
+                <div class="emi-benefit-card">
+                    <div class="emi-benefit-icon">
+                        <i class="ph ph-file-text"></i>
+                    </div>
+                    <h3>Easy Documentation</h3>
+                    <p>Our team assists you with all paperwork and documentation required for smooth loan processing.
+                    </p>
+                </div>
+                <div class="emi-benefit-card">
+                    <div class="emi-benefit-icon">
+                        <i class="ph ph-clock-countdown"></i>
+                    </div>
+                    <h3>Quick Approval</h3>
+                    <p>With pre-approved projects and verified documents, get your home loan sanctioned in just 7-10
+                        days.</p>
+                </div>
+                <div class="emi-benefit-card">
+                    <div class="emi-benefit-icon">
+                        <i class="ph ph-currency-inr"></i>
+                    </div>
+                    <h3>Zero Processing Fee</h3>
+                    <p>Special offers through our partner banks often include waived processing fees for our customers.
+                    </p>
+                </div>
+                <div class="emi-benefit-card">
+                    <div class="emi-benefit-icon">
+                        <i class="ph ph-shield-check"></i>
+                    </div>
+                    <h3>100% Transparency</h3>
+                    <p>Clear project timelines, fixed pricing, and no hidden charges. What you see is what you pay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Loan Info Section -->
+    <section class="services-section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header text-center">
+                <p class="section-subtitle">Loan Information</p>
+                <h2 class="section-title">Understanding Home Loans</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph ph-percent"></i>
+                    </div>
+                    <h3>Interest Rates</h3>
+                    <p>Current home loan interest rates range from 8% to 10% depending on your credit score and bank.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph ph-calendar"></i>
+                    </div>
+                    <h3>Loan Tenure</h3>
+                    <p>Most banks offer home loans with tenures ranging from 5 to 30 years. Longer tenure means lower
+                        EMI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph ph-receipt"></i>
+                    </div>
+                    <h3>Processing Fees</h3>
+                    <p>Banks typically charge 0.5% to 1% of the loan amount as processing fees.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph ph-hand-coins"></i>
+                    </div>
+                    <h3>Down Payment</h3>
+                    <p>Usually, banks finance 80-90% of property value. You need to arrange 10-20% as down payment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="section-subtitle">Expert Tips</p>
+                    <h2 class="section-title">Tips for Home Loan Approval</h2>
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div
+                                style="width: 30px; height: 30px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: 600;">1</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--secondary-color); margin-bottom: 5px;">Maintain Good Credit
+                                    Score</h4>
+                                <p style="color: var(--text-light); font-size: 14px;">A credit score above 750 increases
+                                    your chances of loan approval and better interest rates.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div
+                                style="width: 30px; height: 30px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: 600;">2</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--secondary-color); margin-bottom: 5px;">Keep Documents Ready</h4>
+                                <p style="color: var(--text-light); font-size: 14px;">Have your income proof, bank
+                                    statements, and property documents organized for faster processing.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <div
+                                style="width: 30px; height: 30px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: 600;">3</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--secondary-color); margin-bottom: 5px;">Compare Multiple Lenders
+                                </h4>
+                                <p style="color: var(--text-light); font-size: 14px;">Shop around for the best interest
+                                    rates and terms from different banks and NBFCs.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 15px;">
+                            <div
+                                style="width: 30px; height: 30px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: 600;">4</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--secondary-color); margin-bottom: 5px;">Choose Optimal EMI</h4>
+                                <p style="color: var(--text-light); font-size: 14px;">Your EMI should not exceed 40% of
+                                    your monthly income for comfortable repayment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <img src="images/About-Img-1.png" alt="Home Loan Tips" class="about-img-main">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Help with Financing?</h2>
+                <p>Our team can help you connect with leading banks for the best home loan deals.</p>
+                <a href="contact.html" class="btn btn-white">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <img src="images/Brightkeyz-Infratructure.png" alt="Brightkeyz Infrastructure"
+                            class="footer-logo">
+                        <p>Building dreams into reality with quality construction and innovative solutions since 1999.
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="services.html">Residential Construction</a></li>
+                            <li><a href="services.html">Commercial Buildings</a></li>
+                            <li><a href="services.html">Renovation & Remodeling</a></li>
+                            <li><a href="services.html">Interior Design</a></li>
+                            <li><a href="services.html">Project Management</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact Info</h4>
+                        <ul class="contact-info">
+                            <li><i class="ph ph-map-pin"></i> Shivanahalli, 411, Jakkur Main Rd, Yelahanka, Bengaluru – 560064</li>
+                            <li><i class="ph ph-phone"></i> +91 99009 90512</li>
+                            <li><i class="ph ph-envelope"></i> info@brightkeyz.com</li>
+                            <li><i class="ph ph-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Brightkeyz Infrastructure. All Rights Reserved.</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - Brightkeyz Infrastructure</title>
+    <meta name="description" content="Explore our portfolio of completed construction projects - residential, commercial, and industrial buildings built with excellence.">
+    <link rel="icon" type="image/png" href="images/cropped-Site-Logo-32x32.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css">
+    <style>
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .projects-page-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        .project-status {
+            display: inline-block;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .project-status.completed {
+            background: #28a745;
+            color: #fff;
+        }
+        .project-status.ongoing {
+            background: #ffc107;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="images/Brightkeyz-Infratructure.png" alt="Brightkeyz Infrastructure">
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li><a href="emi-calculator.html" class="nav-link">EMI Calculator</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-right">
+                    <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+                    <button class="hamburger" id="hamburger" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="background: linear-gradient(rgba(15, 15, 26, 0.9), rgba(15, 15, 26, 0.9)), url('images/2151264503-2-min.jpg') center/cover;">
+        <div class="container">
+            <h1 class="page-title">Our Projects</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Projects</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="completed-projects-section projects-page-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <p class="section-subtitle">Our Portfolio</p>
+                <h2 class="section-title">Featured Construction Projects</h2>
+                <p class="section-desc">Explore our diverse portfolio of completed projects showcasing our expertise in residential, commercial, and industrial construction.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="ongoing">Ongoing</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="completed-projects-grid">
+                <!-- Completed Projects -->
+                <div class="completed-project-card" data-category="completed">
+                    <div class="completed-project-image">
+                        <img src="images/completed/ho.png" alt="Residential Villa">
+                    </div>
+                    <div class="completed-project-info">
+                        <span class="project-status completed">Completed</span>
+                        <h3 class="completed-project-title">Residential Villa</h3>
+                        <p class="completed-project-location">Bangalore - Delivered</p>
+                    </div>
+                </div>
+                <div class="completed-project-card" data-category="completed">
+                    <div class="completed-project-image">
+                        <img src="images/completed/ho1.png" alt="Modern Home">
+                    </div>
+                    <div class="completed-project-info">
+                        <span class="project-status completed">Completed</span>
+                        <h3 class="completed-project-title">Modern Home</h3>
+                        <p class="completed-project-location">Bangalore - Delivered</p>
+                    </div>
+                </div>
+                <div class="completed-project-card" data-category="completed">
+                    <div class="completed-project-image">
+                        <img src="images/completed/ho2.png" alt="Luxury Residence">
+                    </div>
+                    <div class="completed-project-info">
+                        <span class="project-status completed">Completed</span>
+                        <h3 class="completed-project-title">Luxury Residence</h3>
+                        <p class="completed-project-location">Bangalore - Delivered</p>
+                    </div>
+                </div>
+                <!-- Ongoing Projects -->
+                <div class="completed-project-card" data-category="ongoing">
+                    <div class="completed-project-image">
+                        <img src="images/ongoing/h1.png" alt="Premium Apartments">
+                    </div>
+                    <div class="completed-project-info">
+                        <span class="project-status ongoing">Ongoing</span>
+                        <h3 class="completed-project-title">Premium Apartments</h3>
+                        <p class="completed-project-location">Bangalore - In Progress</p>
+                    </div>
+                </div>
+                <div class="completed-project-card" data-category="ongoing">
+                    <div class="completed-project-image">
+                        <img src="images/ongoing/h2.png" alt="Residential Complex">
+                    </div>
+                    <div class="completed-project-info">
+                        <span class="project-status ongoing">Ongoing</span>
+                        <h3 class="completed-project-title">Residential Complex</h3>
+                        <p class="completed-project-location">Bangalore - In Progress</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coming Soon Section -->
+            <div style="text-align: center; margin-top: 50px; padding: 40px; background: var(--white); border-radius: 10px; box-shadow: var(--shadow);">
+                <h3 style="color: var(--primary-color); margin-bottom: 15px;">More Projects Coming Soon</h3>
+                <p style="color: var(--text-light);">Commercial & Residential projects coming soon. Stay tuned!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="counter-stats-section">
+        <div class="container">
+            <div class="counter-stats-grid">
+                <div class="counter-stat-item">
+                    <span class="counter-number">150<span class="counter-plus">+</span></span>
+                    <p class="counter-label">Projects Completed</p>
+                </div>
+                <div class="counter-stat-item">
+                    <span class="counter-number">500<span class="counter-plus">+</span></span>
+                    <p class="counter-label">Happy Clients</p>
+                </div>
+                <div class="counter-stat-item">
+                    <span class="counter-number">25<span class="counter-plus">+</span></span>
+                    <p class="counter-label">Years Experience</p>
+                </div>
+                <div class="counter-stat-item">
+                    <span class="counter-number">15<span class="counter-plus">+</span></span>
+                    <p class="counter-label">Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Have a Project in Mind?</h2>
+                <p>Let's discuss how we can bring your vision to life.</p>
+                <a href="contact.html" class="btn btn-white">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <img src="images/Brightkeyz-Infratructure.png" alt="Brightkeyz Infrastructure" class="footer-logo">
+                        <p>Building dreams into reality with quality construction and innovative solutions since 1999.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="services.html">Residential Construction</a></li>
+                            <li><a href="services.html">Commercial Buildings</a></li>
+                            <li><a href="services.html">Renovation & Remodeling</a></li>
+                            <li><a href="services.html">Interior Design</a></li>
+                            <li><a href="services.html">Project Management</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contact Info</h4>
+                        <ul class="contact-info">
+                            <li><i class="ph ph-map-pin"></i> Shivanahalli, 411, Jakkur Main Rd, Yelahanka, Bengaluru – 560064</li>
+                            <li><i class="ph ph-phone"></i> +91 99009 90512</li>
+                            <li><i class="ph ph-envelope"></i> info@brightkeyz.com</li>
+                            <li><i class="ph ph-clock"></i> Mon - Sat: 9:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 Brightkeyz Infrastructure. All Rights Reserved.</p>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
