@@ -1,0 +1,31 @@
+name: Deploy to Vercel
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  vercel-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "ERROR: set VERCEL_TOKEN in repository secrets";
+            exit 1;
+          fi
+          # Non-interactive production deploy
+          npx vercel --prod --token "$VERCEL_TOKEN" --confirm
