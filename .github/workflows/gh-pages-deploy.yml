@@ -15,6 +15,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Prepare public directory (copy tracked files)
+        run: |
+          set -e
+          rm -rf public
+          mkdir -p public
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          # Copy only tracked files to public/ preserving paths
+          git ls-files -z | xargs -0 -I{} bash -c 'mkdir -p "public/$(dirname "{}")"; cp "{}" "public/{}"'
+          # Remove any workflow or git metadata accidentally copied
+          rm -rf public/.github public/.git
 
       - name: Configure Pages
         uses: actions/configure-pages@v3
@@ -22,7 +32,7 @@ jobs:
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./
+          path: public
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
